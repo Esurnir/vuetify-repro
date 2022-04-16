@@ -3,6 +3,14 @@
     <v-row>
       <v-col>
         Choose a monster ! :
+        <!-- This should not report an error, yet vmodel and items will both reports typescript errors.
+              For V-Model : Type 'Monster | undefined' is not assignable to type 'string | number | unknown[] | undefined'.
+              Type 'Monster' is not assignable to type 'string | number | unknown[] | undefined'.ts(2322)
+              index.d.ts(477, 13): The expected type comes from property 'modelValue' which is declared here on type 'IntrinsicAttributes & Partial<{ transition: string | boolean | (TransitionProps & { component?: Component<any, any, any, ComputedOptions, MethodOptions> | undefined; }); ... 10 more ...; openOnClear: boolean; }> & Omit<...>' 
+              For items :
+              Type '{ title: string; value: { name: string; shouts: string; lethal: boolean; }; }[]' is not assignable to type 'SelectItem[]'.
+              Type '{ title: string; value: { name: string; shouts: string; lethal: boolean; }; }' is not assignable to type 'SelectItem'.ts(2322)
+              index.d.ts(475, 13): The expected type comes from property 'items' which is declared here on type 'IntrinsicAttributes & Partial<{ transition: string | boolean | (TransitionProps & { component?: Component<any, any, any, ComputedOptions, MethodOptions> | undefined; }); ... 10 more ...; openOnClear: boolean; }> & Omit<...>'-->
         <v-select v-model="selectedMonster" :items="items" />
       </v-col>
       <v-col v-if="selectedMonster">
